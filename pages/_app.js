@@ -16,28 +16,28 @@ const App = ({ Component, pageProps }) => (
 
 // Sync redux store into server side
 App.getInitialProps = async ({ Component, ctx }) => {
-	const pageProps = {
-		...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
-	}
+  const pageProps = {
+    ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+  }
 
-	if (ctx.req) {
-		ctx.store.dispatch(END)
-		await ctx.store.sagaTask.toPromise()
-	}
+  if (ctx.req) {
+    ctx.store.dispatch(END)
+    await ctx.store.sagaTask.toPromise()
+  }
 
-	return {
-		pageProps,
-	}
+  return {
+    pageProps,
+  }
 }
 
 App.propTypes = {
-	Component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-	pageProps: PropTypes.oneOfType([PropTypes.node, PropTypes.object]),
+  Component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  pageProps: PropTypes.oneOfType([PropTypes.node, PropTypes.object]),
 }
 
 App.defaultProps = {
-	Component: '',
-	pageProps: {},
+  Component: '',
+  pageProps: {},
 }
 
 export default store.withRedux(App)

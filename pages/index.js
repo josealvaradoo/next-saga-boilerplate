@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 
 const Home = () => (
@@ -6,7 +7,11 @@ const Home = () => (
 			<title>Create Next App</title>
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
-		<p>It's working</p>
+		<p>
+			It
+			{'\''}
+			s working
+		</p>
 	</>
 )
 

@@ -6,7 +6,7 @@ import { createWrapper, HYDRATE } from 'next-redux-wrapper'
 import sagas from './sagas'
 import reducers from './reducers'
 
-export const store = () => {
+export const reduxStore = () => {
   const sagaMiddleware = createSagaMiddleware()
 
   // Combined Reducers
@@ -21,15 +21,15 @@ export const store = () => {
   }
 
   // Create global state using reducers, middlewares and redux-dev-tools
-  const _store = createStore(
+  const store = createStore(
     reducer,
     composeWithDevTools(applyMiddleware(sagaMiddleware)),
   )
 
   // Run middleware sagas
-  _store.sagaTask = sagaMiddleware.run(sagas)
+  store.sagaTask = sagaMiddleware.run(sagas)
 
-  return _store
+  return store
 }
 
-export default createWrapper(store, { debug: false })
+export default createWrapper(reduxStore, { debug: false })
