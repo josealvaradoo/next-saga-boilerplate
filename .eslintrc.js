@@ -16,13 +16,16 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: [
     'react',
   ],
   rules: {
+    'import/no-named-as-default': 'off',
+    'import/no-named-as-default-member': 'off',
+    'no-unsafe-optional-chaining': 'warn',
     'implicit-arrow-linebreak': ['error', 'beside'],
     'max-len': ['error', { code: 120 }],
     'no-console': 'off',
